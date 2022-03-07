@@ -18,7 +18,7 @@ jobs:
   golangci-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-go@v2
       - uses: golangci/golangci-lint-action@v2.3.0
         with:
@@ -43,7 +43,7 @@ jobs:
           packages: reuse
 
       # Generate
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: PATH="$(go env GOPATH)/bin:$PATH" make generate
       - run: |
           if [ "$(git status --porcelain | wc -l)" -ne 0 ]; then
@@ -57,12 +57,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-go@v2
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: |
           make test
 
   license:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: fsfe/reuse-action@v1.1
